@@ -18,7 +18,7 @@ import {
 } from 'lucide-react'
 import type { Post } from './posts-mock-data'
 
-export function Post({ postData, ...props }: { postData: Post }) {
+export function Post({ postData }: { postData: Post }) {
 	return (
 		<Card className='w-full border-none shadow-none cursor-pointer hover:bg-gray-50 gap-0'>
 			<CardHeader className='text-body-small min-h-8 mb-1 px-0'>

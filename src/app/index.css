@@ -1,0 +1,170 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+	--breakpoint-s: 80rem;
+	--radius-sm: calc(var(--radius) - 4px);
+	--radius-md: calc(var(--radius) - 2px);
+	--radius-lg: var(--radius);
+	--radius-xl: calc(var(--radius) + 4px);
+	--color-background: var(--background);
+	--color-foreground: var(--foreground);
+	--color-card: var(--card);
+	--color-card-foreground: var(--card-foreground);
+	--color-popover: var(--popover);
+	--color-popover-foreground: var(--popover-foreground);
+	--color-primary: var(--primary);
+	--color-primary-foreground: var(--primary-foreground);
+	--color-secondary: var(--secondary);
+	--color-secondary-foreground: var(--secondary-foreground);
+	--color-muted: var(--muted);
+	--color-muted-foreground: var(--muted-foreground);
+	--color-accent: var(--accent);
+	--color-accent-foreground: var(--accent-foreground);
+	--color-destructive: var(--destructive);
+	--color-border: var(--border);
+	--color-input: var(--input);
+	--color-ring: var(--ring);
+	--color-chart-1: var(--chart-1);
+	--color-chart-2: var(--chart-2);
+	--color-chart-3: var(--chart-3);
+	--color-chart-4: var(--chart-4);
+	--color-chart-5: var(--chart-5);
+	--color-sidebar: var(--sidebar);
+	--color-sidebar-foreground: var(--sidebar-foreground);
+	--color-sidebar-primary: var(--sidebar-primary);
+	--color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+	--color-sidebar-accent: var(--sidebar-accent);
+	--color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+	--color-sidebar-border: var(--sidebar-border);
+	--color-sidebar-ring: var(--sidebar-ring);
+	/* Reddit-specific custom properties (for non-shadcn components) */
+	--color-reddit-orange: oklch(0.577 0.245 27.325); /* #FF4500 */
+	--color-reddit-blue: oklch(0.52 0.187 258.338); /* #0079D3 */
+	--color-reddit-success: oklch(0.7 0.15 142.5); /* #46D160 */
+	--color-reddit-warning: oklch(0.75 0.15 85.87); /* #FFB000 */
+	--color-reddit-text-tertiary: oklch(0.72 0.01 247.858); /* #B8BBBF */
+	--color-reddit-active-blue: oklch(
+		0.94 0.01 210
+	); /* #E9F5FD - Blue active state */
+
+	/* Typography Scale */
+	--text-display-large: 1.75rem; /* 28px */
+	--text-headline: 1.375rem; /* 22px */
+	--text-title-large: 1.125rem; /* 18px */
+	--text-title-medium: 1rem; /* 16px */
+	--text-body-large: 1rem; /* 16px */
+	--text-body-medium: 0.875rem; /* 14px */
+	--text-body-small: 0.75rem; /* 12px */
+	--text-label: 0.75rem; /* 12px */
+	--text-caption: 0.625rem; /* 10px */
+}
+
+:root {
+	--radius: 0.5rem; /* 8px - Reddit's medium radius */
+
+	/* Background and Surface Colors */
+	--background: oklch(1 0 0); /* #FFFFFF - Main page background */
+	--foreground: oklch(0.18 0 0); /* #1C1C1C - Primary text color */
+
+	/* Card colors (used for post cards, sidebars, etc.) */
+	--card: oklch(0.99 0 0); /* #F8F9FA - Reddit's surface/card background */
+	--card-foreground: oklch(0.18 0 0); /* #1C1C1C - Text on cards */
+
+	/* Popover/Modal colors */
+	--popover: oklch(1 0 0); /* #FFFFFF */
+	--popover-foreground: oklch(0.18 0 0); /* #1C1C1C */
+
+	/* Primary = Reddit Orange (for main CTAs, upvotes when active) */
+	--primary: oklch(0.577 0.245 27.325); /* #FF4500 - Reddit Orange */
+	--primary-foreground: oklch(1 0 0); /* White text on orange */
+
+	/* Secondary = Subtle backgrounds and borders */
+	--secondary: oklch(
+		0.97 0.005 247.858
+	); /* #F6F7F8 - Light gray backgrounds */
+	--secondary-foreground: oklch(0.18 0 0); /* Dark text on light backgrounds */
+
+	/* Muted = Less prominent elements (meta info, disabled states) */
+	--muted: oklch(0.97 0.005 247.858); /* #F6F7F8 - Muted backgrounds */
+	--muted-foreground: oklch(
+		0.5 0.02 247.858
+	); /* #787C82 - Reddit's secondary text */
+
+	/* Accent = Hover states and subtle highlights */
+	--accent: oklch(0.97 0.005 247.858); /* #F6F7F8 - Hover background */
+	--accent-foreground: oklch(0.18 0 0); /* Dark text on hover */
+
+	/* Destructive = Error states, downvotes when active */
+	--destructive: oklch(0.55 0.22 12.18); /* #EA0027 - Reddit's error color */
+	--destructive-foreground: oklch(1 0 0); /* White text on red */
+
+	/* Border and Input colors */
+	--border: oklch(0.93 0.005 247.858); /* #E4E6EA - Reddit's light borders */
+	--input: oklch(0.93 0.005 247.858); /* Same as border for form inputs */
+
+	/* Ring = Focus outlines */
+	--ring: oklch(0.52 0.187 258.338); /* #0079D3 - Reddit Blue for focus */
+
+	/* Chart colors */
+	--chart-1: oklch(0.577 0.245 27.325); /* Reddit Orange */
+	--chart-2: oklch(0.52 0.187 258.338); /* Reddit Blue */
+	--chart-3: oklch(0.7 0.15 142.5); /* Success Green */
+	--chart-4: oklch(0.75 0.15 85.87); /* Warning Amber */
+	--chart-5: oklch(0.55 0.22 12.18); /* Error Red */
+
+	/* Sidebar colors (shadcn sidebar component) */
+	--sidebar: oklch(0.99 0 0); /* #F8F9FA - Same as card */
+	--sidebar-foreground: oklch(0.18 0 0);
+	--sidebar-primary: oklch(0.577 0.245 27.325); /* Reddit Orange */
+	--sidebar-primary-foreground: oklch(1 0 0);
+	--sidebar-accent: oklch(0.97 0.005 247.858); /* Hover state */
+	--sidebar-accent-foreground: oklch(0.18 0 0);
+	--sidebar-border: oklch(0.93 0.005 247.858);
+	--sidebar-ring: oklch(0.52 0.187 258.338);
+}
+
+.dark {
+	--background: oklch(0.129 0.042 264.695);
+	--foreground: oklch(0.984 0.003 247.858);
+	--card: oklch(0.208 0.042 265.755);
+	--card-foreground: oklch(0.984 0.003 247.858);
+	--popover: oklch(0.208 0.042 265.755);
+	--popover-foreground: oklch(0.984 0.003 247.858);
+	--primary: oklch(0.929 0.013 255.508);
+	--primary-foreground: oklch(0.208 0.042 265.755);
+	--secondary: oklch(0.279 0.041 260.031);
+	--secondary-foreground: oklch(0.984 0.003 247.858);
+	--muted: oklch(0.279 0.041 260.031);
+	--muted-foreground: oklch(0.704 0.04 256.788);
+	--accent: oklch(0.279 0.041 260.031);
+	--accent-foreground: oklch(0.984 0.003 247.858);
+	--destructive: oklch(0.704 0.191 22.216);
+	--border: oklch(1 0 0 / 10%);
+	--input: oklch(1 0 0 / 15%);
+	--ring: oklch(0.551 0.027 264.364);
+	--chart-1: oklch(0.488 0.243 264.376);
+	--chart-2: oklch(0.696 0.17 162.48);
+	--chart-3: oklch(0.769 0.188 70.08);
+	--chart-4: oklch(0.627 0.265 303.9);
+	--chart-5: oklch(0.645 0.246 16.439);
+	--sidebar: oklch(0.208 0.042 265.755);
+	--sidebar-foreground: oklch(0.984 0.003 247.858);
+	--sidebar-primary: oklch(0.488 0.243 264.376);
+	--sidebar-primary-foreground: oklch(0.984 0.003 247.858);
+	--sidebar-accent: oklch(0.279 0.041 260.031);
+	--sidebar-accent-foreground: oklch(0.984 0.003 247.858);
+	--sidebar-border: oklch(1 0 0 / 10%);
+	--sidebar-ring: oklch(0.551 0.027 264.364);
+}
+
+@layer base {
+	* {
+		@apply border-border outline-ring/50;
+	}
+	body {
+		@apply bg-background text-foreground;
+	}
+}

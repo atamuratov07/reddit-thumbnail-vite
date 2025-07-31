@@ -11,5 +11,5 @@ export default defineConfig({
 			'@': path.resolve(__dirname, './src'),
 		},
 	},
-	base: '/reddit-thumbnail-vite',
+	base: '/reddit-thumbnail-vite/',
 })
